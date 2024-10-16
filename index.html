@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Radio Player</title>
+    <!-- icons -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+<body>
+    <div class="radio-player">
+        <div class="radio-selector">
+            <div class="radio-button-container">
+                <input type="radio" id="france-info" name="radio-station" value="france-info" checked>
+                <label for="france-info" class="radio-button">France Info</label>
+            </div>
+            <div class="radio-button-container">
+                <input type="radio" id="rfi" name="radio-station" value="rfi">
+                <label for="rfi" class="radio-button">RFI</label>
+            </div>
+            <div class="radio-button-container">
+                <input type="radio" id="fip" name="radio-station" value="fip">
+                <label for="fip" class="radio-button">FIP</label>
+            </div>
+        </div>
+
+        <audio id="radio-stream" class="visually-hidden"></audio>
+        <div class="player-controls">
+            <button name="play-pause" class="button play-pause-button" aria-label="Play/pause">
+                <i class="fas fa-play" aria-hidden="true"></i>
+            </button>
+            <div class="volume-and-title">
+                <!-- <div class="currently-playing" aria-label="Currently playing">
+                    <span class="currently-playing-label">Now playing on France Info</span>
+                    <span class="currently-playing-title" id="current-song"></span>
+                </div> -->
+                <div class="volume-controls">
+                    <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.5">
+                    <button name="mute" class="button mute-button" aria-label="Mute/unmute">
+                        <i class="fas fa-volume-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
