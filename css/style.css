@@ -1,10 +1,24 @@
-/* styles.css */
+body {
+    background-color: #0D0D0D;
+    color: #fff;
+}
+
+:root {
+    --grey: #72736E;
+    --light-grey: #A5A69C;
+    --dark-grey: #0D0D0D;
+    --white: #D9D7CC;
+    --dark: #262626;
+    --other-dark: #333;
+    --active: #fff;
+}
+
 .radio-player {
     width: 300px;
     margin: auto;
     padding: 20px;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
+    background-color: var(--dark);
+    border: 1px solid var(--grey);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -16,7 +30,7 @@
 }
 
 .button {
-    background-color: #4CAF50;
+    background-color: var(--grey);
     color: #fff;
     border: none;
     padding: 20px 40px;
@@ -75,7 +89,7 @@
     font-size: 24px;
     border: none;
     border-radius: 10px;
-    background-color: #4CAF50;
+    background-color: var(--grey);
     color: #fff;
     cursor: pointer;
 }
@@ -89,5 +103,28 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + .radio-button {
-    background-color: #2e7d32;
+    /* background-color: #E8BB05 !important; */
+    border: 2px solid var(--active);
+}
+
+.france-info {
+    background-color: #fccc04 !important;
+    color: var(--other-dark)
+}
+.france-info:hover {
+    background-color: #E8BB05 !important;
+}
+
+.rfi {
+    background-color: #D14016 !important;
+}
+.rfi:hover {
+    background-color: #D12519 !important;
+}
+
+.fip {
+    background-color: #CF0470 !important;
+}
+.fip:hover {
+    background-color: #BA0465 !important;
 }

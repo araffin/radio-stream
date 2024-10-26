@@ -56,6 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
       playPauseButtonIcon.classList.remove("fa-play");
       playPauseButtonIcon.classList.add("fa-pause");
       isPlaying = true;
+      // Change page title to show the current station
+      const selectedRadioButton = document.querySelector(
+        'input[type="radio"]:checked',
+      );
+      document.title = `${selectedRadioButton.labels[0].innerText} - Radio Player`;
+
     }
   });
 
