@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const volumeButton = document.querySelector('[name="mute"]');
   const volumeButtonIcon = volumeButton.querySelector("i.fas");
   const currentlyPlaying = document.getElementById("current-song");
+  const msg = document.getElementById("msg");
 
   const radioButtons = document.querySelectorAll('input[type="radio"]');
 
@@ -13,9 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // https://github.com/angelodlfrtr/radiotray
   // Define the radio station streams
   const radioStreams = {
-    "france-info": "https://icecast.radiofrance.fr/franceinfo-hifi.aac?id=radiofrance",
-    "fip": "https://icecast.radiofrance.fr/fip-hifi.aac?id=radiofrance",
-    "rfi": "https://rfimonde64k.ice.infomaniak.ch/rfimonde-64.mp3",
+    "france-info":
+      "https://icecast.radiofrance.fr/franceinfo-hifi.aac?id=radiofrance",
+    fip: "https://icecast.radiofrance.fr/fip-hifi.aac?id=radiofrance",
+    rfi: "https://rfimonde64k.ice.infomaniak.ch/rfimonde-64.mp3",
     // 'france-culture': 'https://icecast.radiofrance.fr/franceculture-hifi.aac?id=radiofrance3'
   };
 
@@ -61,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
         'input[type="radio"]:checked',
       );
       document.title = `${selectedRadioButton.labels[0].innerText} - Radio Player`;
-
     }
   });
 
@@ -94,6 +95,24 @@ document.addEventListener("DOMContentLoaded", () => {
       volumeButtonIcon.classList.add("fa-volume-down");
     }
   }
+
+  const reconnectStream = () => {
+    reconnectInterval = setInterval(() => {
+      if (audio.paused || audio.error) {
+        audio.play().catch(() => {
+          // If play fails again, keep trying
+        });
+      } else {
+        msg.classList.add("hidden");
+        clearInterval(reconnectInterval);
+      }
+    }, 2000); // Try to reconnect every 5 seconds
+  };
+
+  audio.addEventListener("error", () => {
+    msg.classList.remove("hidden");
+    reconnectStream();
+  });
 
   // Fetch currently playing song information (if available)
   // This example assumes a simple JSON endpoint

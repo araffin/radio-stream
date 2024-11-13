@@ -1,13 +1,13 @@
 body {
-    background-color: #0D0D0D;
+    background-color: #0d0d0d;
     color: #fff;
 }
 
 :root {
-    --grey: #72736E;
-    --light-grey: #A5A69C;
-    --dark-grey: #0D0D0D;
-    --white: #D9D7CC;
+    --grey: #72736e;
+    --light-grey: #a5a69c;
+    --dark-grey: #0d0d0d;
+    --white: #d9d7cc;
     --dark: #262626;
     --other-dark: #333;
     --active: #fff;
@@ -109,22 +109,30 @@ input[type="radio"]:checked + .radio-button {
 
 .france-info {
     background-color: #fccc04 !important;
-    color: var(--other-dark)
+    color: var(--other-dark);
 }
 .france-info:hover {
-    background-color: #E8BB05 !important;
+    background-color: #e8bb05 !important;
 }
 
 .rfi {
-    background-color: #D14016 !important;
+    background-color: #d14016 !important;
 }
 .rfi:hover {
-    background-color: #D12519 !important;
+    background-color: #d12519 !important;
 }
 
 .fip {
-    background-color: #CF0470 !important;
+    background-color: #cf0470 !important;
 }
 .fip:hover {
-    background-color: #BA0465 !important;
+    background-color: #ba0465 !important;
+}
+
+#msg {
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
 }
