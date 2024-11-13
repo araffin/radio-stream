@@ -96,9 +96,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  window.addEventListener("online", () => {
+    if (isPlaying) {
+      reconnectStream();
+    }
+  });
+  window.addEventListener("offline", () => {
+    if (isPlaying) {
+      msg.classList.remove("hidden");
+    }
+  });
+
   const reconnectStream = () => {
     reconnectInterval = setInterval(() => {
+      if (!window.navigator.onLine) {
+        // console.log("Still offline...");
+        return;
+      }
+
       if (audio.paused || audio.error) {
+        audio.src = audio.src;
+        playPauseButton.click();
+        playPauseButton.click();
         audio.play().catch(() => {
           // If play fails again, keep trying
         });
@@ -106,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
         msg.classList.add("hidden");
         clearInterval(reconnectInterval);
       }
-    }, 2000); // Try to reconnect every 5 seconds
+    }, 2000); // Try to reconnect every 2 seconds
   };
 
   audio.addEventListener("error", () => {
